@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Văn vở đến từ khoai</title>
+  <style>
+    @font-face {
+      font-family: "Iciel Brittany Signature Regular";
+      src: url("fonts/IcielBrittanySignature-Regular.woff2") format("woff2"),
+        url("fonts/IcielBrittanySignature-Regular.woff") format("woff"),
+        url("fonts/iCielBrittanySignature-Regular.ttf") format("truetype");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    :root {
+      --backdrop-brightness: 0.7;
+      --backdrop-blur: 5px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+        Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    /* Background image layer (now uses img.png in repo) */
+    #bg {
+      position: fixed;
+      inset: 0;
+      background-image: url("img.png");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      z-index: -1000;
+      filter: brightness(var(--backdrop-brightness)) blur(var(--backdrop-blur));
+      transform: translateZ(0);
+    }
+
+    #hello-kitty-element {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -999;
+      max-width: 250px;
+      width: 60%;
+      height: auto;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .container {
+      background-color: rgba(255, 198, 198, 0.85);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      max-width: 720px;
+      width: 100%;
+      text-align: left;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      backdrop-filter: saturate(120%);
+    }
+
+    .image-frames {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .image-frame {
+      width: min(45%, 320px);
+      aspect-ratio: 1 / 1;
+      background-color: #f0f0f0;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 0.9em;
+      color: #555;
+      overflow: hidden;
+      border: 2px solid #ddd;
+    }
+
+    .image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 13px;
+    }
+
+    .dear-text {
+      font-family: "Iciel Brittany Signature Regular", cursive;
+      font-size: 1.8em;
+      font-weight: normal;
+      margin-bottom: 8px;
+      color: #ad1457;
+    }
+
+    .message-content {
+      font-size: 1em;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .media-section {
+      margin: 16px 0 28px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .media-section label {
+      font-size: 0.95em;
+      color: #444;
+    }
+
+    .responsive-video {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      outline: none;
+      background: #000;
+    }
+
+    .signature-section {
+      text-align: center;
+      margin-top: 28px;
+    }
+
+    .signature-description {
+      font-size: 0.9em;
+      font-style: italic;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    .signature-image {
+      width: 150px;
+      height: auto;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 8px;
+    }
+
+    .signature-name {
+      font-size: 1em;
+      font-weight: bold;
+    }
+
+    @media (max-width: 480px) {
+      :root {
+        --backdrop-brightness: 0.6;
+        --backdrop-blur: 3px;
+      }
+
+      .container {
+        padding: 16px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        background-color: rgba(255, 198, 198, 0.9);
+      }
+
+      .image-frame { font-size: 0.8em; width: min(85%, 360px); }
+
+      .dear-text { font-size: 1.5em; margin-bottom: 6px; }
+
+      .message-content { font-size: 0.95em; }
+
+      .signature-image { width: 120px; }
+
+      .signature-section { margin-top: 24px; }
+
+      #hello-kitty-element { max-width: 180px; width: 50%; opacity: 0.5; }
+    }
+  </style>
+</head>
+<body>
+  <div id="bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="image-frames">
+      <div class="image-frame">
+        <img src="pic2.png" alt="Chờ ảnh của chúng mình lúc ở sbay nhóoo" loading="lazy" decoding="async" />
+      </div>
+    </div>
+
+    <div class="dear-text" id="dearName">Helu cừu iu,</div>
+
+    <div class="message-content" id="messageContent">
+Haluuuuu,
+Ô dc tận 1 tháng hơn gòy í hở? Nhanh dữ. Òm kiểu tớ cgiac tớ với c mới quen nhau n ch đủ dài nma chuyện mà tớ chia sẻ với c n nhiều như kiểu tớ với c quen nhau từ bé í c. Thsu là tớ kh nghĩ tớ sẽ quen dc c lun tvi k nghĩ là có ng thấy 1 đứa khùng khùng hâm hâm đi spam add fr lại đi acp í tr=))) Xong rui là cái hôm đầu tiên tớ đi chơi vs c n lại còn bựa cơ =))) dkm tự nhiên mưa gió rủ nhau ra thư viện (xong còn toàn đuổi tớ về ưtf) xong r đi đá bát bún cá ạ dhieu =)). hjhj xong còn mấy hôm sau mik còn bắn thuốc lào vca hút melon ạ =)) ê thsu là tớ ch từng thử mấy cday nh đến v cho đến khi tớ gặp c í tr. Kiểu thsu là từ khi gặp c c đã khiến tớ có những trải nghiệm vô cùng ? (ma thra cx vui hjhj) Tớ thsu k nghĩ là sau cái hôm mà mình nắm tay đi trên hồ tây là xong tớ với c sẽ thành chuyện nnay tht luôn á =))) thề là hday về chỉ lo c tránh mặt tớ (xong hsau to lo tranh mat c hjhj) Tnhien cái bài we fell in love in Oct n lại đúng ha c. Sắp tới đây c ik du học là c sẽ mở ra 1 chân trời mới, tớ mong rằng cún con của tớ sẽ luôn vui vẻ cũng như luôn cố gắng học tập tht giỏi để hok phụ lòng bà Thục đã khen nhs =))))). Mong rằng dù là có cách nhau bao xa thì tớ với c vẫn sẽ luôn như này, mà kể cả có hok dc như bh nữa thì tớ với c vẫn sẽ làm bạn với nhau nhsss. Coa cai secret o duoi i nho xem nhsss hjhjhjhj. Tớ yêu cậu nhiều hơn ngày hqua và ít hơn ngày hôm nay, sẽ luôn luôn là v. Я тебя люблю ❤️‍🩹
+    </div>
+
+    <div class="media-section">
+		<label for="video-player">SECRET NEKKK</label>
+		<video
+			id="video-player"
+			class="responsive-video"
+			controls
+			playsinline
+			preload="metadata"
+			poster=""
+		>
+			<source src="videos/my-video.mp4" type="video/mp4" />
+			<source src="videos/my-video.webm" type="video/webm" />
+			Trình duyệt của bạn không hỗ trợ phát video HTML5.
+		</video>
+		<div class="download-link">
+			<a href="https://example.com/path-to-video-download" target="_blank" rel="noopener noreferrer">
+				📥 Tải video tại đây
+		 </a>
+		</div>
+	</div>
+
+    <div class="signature-section">
+      <div class="signature-description">Nguoi yeu cua cun (dua ma cun luc nao cung ghec 😾)</div>
+      <img src="image_0cc929.png" alt="Chữ ký Khôi" class="signature-image" loading="lazy" decoding="async" />
+      <div class="signature-name">Khoai ngốk (Nguyen Canh Khoi)</div>
+    </div>
+  </div>
+</body>
+</html>
